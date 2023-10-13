@@ -3086,6 +3086,8 @@
         var forestry_def = 1.0;
         var bioenergy_def = 1.0;
 
+        var result_value = 0.0;
+
         var websocket = null;
 
         // Define the WebSocket URL
@@ -3146,9 +3148,10 @@
                 console.log(dat[8]);
 
                 console.log(((dat[8] - dat[1]) / dat[1]) * 100);
-                result_show.innerHTML = (((dat[8] - dat[1]) / dat[1]) * 100).toFixed(
+                result_value = (((dat[8] - dat[1]) / dat[1]) * 100).toFixed(
                     1
                 );
+                result_show.innerHTML = result_value;
             };
 
             // Handle any errors that occur
@@ -3172,32 +3175,154 @@
 
         startWebSocket();
 
-        function goToResults(){
-            window.location.href = 'results-page.html?'+ 
-            'electricity_current_val='+electricity_current_val+
-            '&hydrogen_current_val ='+hydrogen_current_val+
-            '&other_energy_current_val='+other_energy_current_val+
-            '&waste_management_current_val='+waste_management_current_val+
-            '&agriculture_current_val='+agriculture_current_val+
-            '&industry_current_val='+industry_current_val+
-            '&building_residential_current_val='+building_residential_current_val+
-            '&building_non_residential_current_val='+building_non_residential_current_val+
-            '&transport_domestic_current_val='+transport_domestic_current_val+
-            '&transport_international_current_val='+transport_international_current_val+
-            '&total_emmissions_current_val='+total_emmissions_current_val+
-            '&electricity_val='+electricity_val+
-            '&hydrogen_val='+hydrogen_val+
-            '&other_energy_val='+other_energy_val+
-            '&waste_management_val='+waste_management_val+
-            '&agriculture_val='+agriculture_val+
-            '&industry_val='+industry_val+
-            '&building_residential_val='+building_residential_val+
-            '&building_non_residential_val='+building_non_residential_val+
-            '&transport_domestic_val='+transport_domestic_val+
-            '&transport_international_val='+transport_international_val+
-            '&total_emmissions_val='+total_emmissions_val
-            ;
+        function goToResults() {
+            var inputs = travel_demand.toFixed(1)  + "-" +
+                        travel_demand.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        light_vehicles.toFixed(1) + "-" +
+                        travel_demand.toFixed(1) + "-" +
+                        travel_demand.toFixed(1) + "-" +
+                        heating_system.toFixed(1) + "-" +
+                        efficiency.toFixed(1) + "-" +
+                        behaviour.toFixed(1) + "-" +
+                        carbon_intensity.toFixed(1) + "-" +
+                        carbon_intensity.toFixed(1) + "-" +
+                        carbon_intensity.toFixed(1) + "-" +
+                        carbon_intensity.toFixed(1) + "-" +
+                        carbon_capture.toFixed(1) + "-" +
+                        hydro_electric.toFixed(1) + "-" +
+                        hydro_electric.toFixed(1) + "-" +
+                        hydro_electric.toFixed(1) + "-" +
+                        carbon_capture.toFixed(1) + "-" +
+                        carbon_capture.toFixed(1) + "-" +
+                        carbon_capture.toFixed(1) + "-" +
+                        wind.toFixed(1) + "-" +
+                        wave_tidal.toFixed(1) + "-" +
+                        solar.toFixed(1) + "-" +
+                        nuclear.toFixed(1) + "-" +
+                        solar.toFixed(1) + "-" +
+                        wind.toFixed(1) + "-" +
+                        nuclear.toFixed(1) + "-" +
+                        wind.toFixed(1) + "-" +
+                        solar.toFixed(1) + "-" +
+                        forestry.toFixed(1) + "-" +
+                        forestry.toFixed(1) + "-" +
+                        bioenergy.toFixed(1) + "-" +
+                        bioenergy.toFixed(1) + 
+                        "&start_years=" +
+                        (2031).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2016).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2016).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2021).toString()+ "-" +
+                        (2031).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2041).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ "-" +
+                        (2026).toString()+ 
+                        "&end_years="+
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString() + "-" +
+                        (2051).toString()
+            window.location.href = 'results-page.html?' +
+                'electricity_current_val=' + electricity_current_val +
+                '&hydrogen_current_val =' + hydrogen_current_val +
+                '&other_energy_current_val=' + other_energy_current_val +
+                '&waste_management_current_val=' + waste_management_current_val +
+                '&agriculture_current_val=' + agriculture_current_val +
+                '&industry_current_val=' + industry_current_val +
+                '&building_residential_current_val=' + building_residential_current_val +
+                '&building_non_residential_current_val=' + building_non_residential_current_val +
+                '&transport_domestic_current_val=' + transport_domestic_current_val +
+                '&transport_international_current_val=' + transport_international_current_val +
+                '&total_emmissions_current_val=' + total_emmissions_current_val +
+                '&electricity_val=' + electricity_val +
+                '&hydrogen_val=' + hydrogen_val +
+                '&other_energy_val=' + other_energy_val +
+                '&waste_management_val=' + waste_management_val +
+                '&agriculture_val=' + agriculture_val +
+                '&industry_val=' + industry_val +
+                '&building_residential_val=' + building_residential_val +
+                '&building_non_residential_val=' + building_non_residential_val +
+                '&transport_domestic_val=' + transport_domestic_val +
+                '&transport_international_val=' + transport_international_val +
+                '&total_emmissions_val=' + total_emmissions_val +
+                '&result_value=' + result_value+
+                '&inputs='+inputs
+                ;
         }
+
 
 
         //Light Vehicles

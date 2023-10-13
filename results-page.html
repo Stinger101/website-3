@@ -75,7 +75,7 @@
             </div>
         </a>
 
-        <a href="https://kcert.ilabafrica.ac.ke" target="_blank">
+        <a href="javascript:kcert();" target="_blank" onclick="kcert();">
             <div style="position: absolute; width: 14.55vw; height: 4.5vw; left: 42.5vw; top: 66.3vw; background-color: #198BBB; border-radius: 0.5vw; border: 0.2vw solid white;">
                 <p style="text-align: center; font-family: Roboto; font-size: 1.68vw; color: white; line-height: 1.5vw;">
                     KCERT
@@ -105,16 +105,22 @@
                 </p>
 
                 <div id="icons">
-                    <img src="images/facebook.png" style="position: absolute; width: 5vw; left: 7vw; top: 8.4vw;">
-                    <img src="images/linkedin.png" style="position: absolute; width: 5vw; left: 16.4vw; top: 8.4vw;">
-                    <img src="images/instagram.png" style="position: absolute; width: 5vw; left: 25.8vw; top: 8.4vw;">
-                    <a id="twitter_share" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
-                        title="Share by Email">
-                        <img  src="images/twitter.png" style="position: absolute; width: 5vw; left: 35.2vw; top: 8.4vw;">
+                    <a id="facebook_share" href="">
+                        <img src="images/facebook.png" style="position: absolute; width: 5vw; left: 7vw; top: 8.4vw;">
+
                     </a>
-                    <a id="mail_share" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
+                    <a id="linkedin_share" href="https://www.linkedin.com/shareArticle?mini=true&url=http://chillyfacts.com/create-linkedin-share-button-on-website-webpages&title=Create LinkedIn Share button on Website Webpages&summary=chillyfacts.com&source=Chillyfacts" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+                        <img src="images/linkedin.png" style="position: absolute; width: 5vw; left: 16.4vw; top: 8.4vw;">
+                    
+                    </a>
+                    
+                    <a id="twitter_share" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site https://kcert.ilabafrica.ac.ke."
                         title="Share by Email">
-                        <img src="images/gmail.png" style="position: absolute; width: 5vw; left: 44.6vw; top: 8.4vw;">
+                        <img  src="images/twitter.png" style="position: absolute; width: 5vw; left: 25.8vw; top: 8.4vw;">
+                    </a>
+                    <a id="mail_share" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site https://kcert.ilabafrica.ac.ke."
+                        title="Share by Email">
+                        <img src="images/gmail.png" style="position: absolute; width: 5vw; left: 35.2vw; top: 8.4vw;">
                     </a>
                 </div>
 
@@ -132,6 +138,9 @@
             document.getElementById("buttonnput").placeholder = window.location.href;
             document.getElementById("mail_share").href='mailto:?subject=I wanted you to see this site&body=Check out this site '+window.location.href+' .';
             document.getElementById("twitter_share").href='http://twitter.com/share?text=View my climate change scenario&url='+window.location.href+'&hashtags=my2050,kcert,climatechange';
+            document.getElementById("linkedin_share").href='https://www.linkedin.com/shareArticle?mini=true&url='+window.location.href+'&title=View my climate change scenario&summary=My 2050&source=My 2050';
+            document.getElementById("facebook_share").href='https://www.facebook.com/sharer/sharer.php?u='+window.location.href;
+
             function myFunction() {
                 navigator.clipboard.writeText(window.location.href);
                 alert("Link Copied");
@@ -175,12 +184,22 @@
             var transport_international_current_val = searchParams.get('transport_international_current_val');
             var total_emmissions_current_val = searchParams.get('total_emmissions_current_val');
             
+            var result_value = searchParams.get('result_value');
+            
+            var inputs = searchParams.get('inputs');
+            var start_years = searchParams.get('start_years');
+            var end_years = searchParams.get('end_years');
+            
             function energy(){
                 window.location.href = "energy-demand-and-supply.html"+window.location.search
             }
 
             function detailsPage(){
                 window.location.href = "details-of-my-scenario.html"+window.location.search
+            }
+
+            function kcert() {
+                window.location.href = "https://kcert.ilabafrica.ac.ke/#?inputs=" + inputs + "&start_years="+start_years+"&end_years="+end_years;
             }
 
             // function kcertwebtool(){
